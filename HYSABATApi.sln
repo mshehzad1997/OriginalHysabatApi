@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HYSABATApi", "HYSABATApi\HYSABATApi.csproj", "{43D5E8C1-A382-4D0B-92C0-FCB7170D44EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HYSABATApi", "HYSABATApi\HYSABATApi.csproj", "{43D5E8C1-A382-4D0B-92C0-FCB7170D44EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
