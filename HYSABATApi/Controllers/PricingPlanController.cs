@@ -16,7 +16,7 @@ namespace HYSABATApi.Controllers
 {
   
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]
     public class PricingPlanController : ControllerBase
     {
         private readonly ApplicationDbContext _db;
