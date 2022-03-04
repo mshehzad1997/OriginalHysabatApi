@@ -9,7 +9,7 @@ namespace HYSABATApi.Models
     public class ResetPassword
     {
         [Required(ErrorMessage = "User Name is required")]
-        public string UserName { get; set; }
+        public string UserEmail { get; set; }
         
         [Required(ErrorMessage = "New Password ")]
         public string NewPassword { get; set; }

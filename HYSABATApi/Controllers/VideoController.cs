@@ -54,8 +54,8 @@ namespace HYSABATApi.Controllers
            
                 string uniqueFileName = null;
                 string extension = Path.GetExtension(model.VideoFile.FileName);
-                if(extension.ToLower() == ".mp4")
-                {
+                //if(extension.ToLower() == ".mp4")
+                //{
                     string uploadFolder = Path.Combine(_webHost.WebRootPath, "Video");
                     uniqueFileName = Guid.NewGuid().ToString() + "_" + model.VideoFile.FileName;
                     string filePath = Path.Combine(uploadFolder, uniqueFileName);
@@ -64,11 +64,11 @@ namespace HYSABATApi.Controllers
                     {
                         await model.VideoFile.CopyToAsync(stream);
                     }
-                }
-                else
-                {
-                    return BadRequest("Not Allowed");
-                }
+                //}
+                //else
+                //{
+                //    return BadRequest("Not Allowed");
+                //}
                 var videoModel = new Video()
                 {
                     VideoName = model.VideoName,

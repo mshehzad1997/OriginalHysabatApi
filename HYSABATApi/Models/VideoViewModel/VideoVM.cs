@@ -16,6 +16,7 @@ namespace HYSABATApi.Models.VideoViewModel
         public string VideoName { get; set; }
         [Required]
         [Display(Name = "Video File")]
+        [AllowedExtension(new string[] { ".mp4"})]
         public IFormFile VideoFile { get; set; }
     }
 }

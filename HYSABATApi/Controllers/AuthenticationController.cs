@@ -109,7 +109,7 @@ namespace HYSABATApi.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User Creation Failed" });
+                return StatusCode(StatusCodes.Status400BadRequest, new Response { Status = "Error", Message = "User Creation Failed" });
 
             }
             if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
@@ -131,7 +131,7 @@ namespace HYSABATApi.Controllers
         [Route("ResetPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPassword model)
         {
-            var user = await _userManager.FindByNameAsync(model.UserName);
+            var user = await _userManager.FindByEmailAsync(model.UserEmail);
             if (user == null)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User Not Exists" });

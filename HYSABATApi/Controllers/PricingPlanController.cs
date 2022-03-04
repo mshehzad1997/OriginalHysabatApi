@@ -67,13 +67,7 @@ namespace HYSABATApi.Controllers
             {
                 string uniqueFileName = null;
                 string planFeature = null;
-                string ImageExtension = Path.GetExtension(model.FileImage.FileName);
-                if(ImageExtension.ToLower() == ".jpg" || ImageExtension.ToLower() == ".jpeg")
-                {
-                    long size = (model.FileImage).Length;
-                    if (size <= 1000000)
-                    {
-
+               
                         string uploadFolder = Path.Combine(_webHost.WebRootPath, "PricingPlan");
                         uniqueFileName = Guid.NewGuid().ToString() + "_" + model.FileImage.FileName;
                         string filePath = Path.Combine(uploadFolder, uniqueFileName);
@@ -81,18 +75,7 @@ namespace HYSABATApi.Controllers
                         {
                            await model.FileImage.CopyToAsync(stream);
                         }
-                    }
-                    else
-                    {
-                        return BadRequest("File Too large");
-                    }
-                }
-                else
-                {
-                    return BadRequest("Cannot Add Image");
-                }
-               
-               
+                   
                 foreach (var item in model.PricingPlanFeatures)
                 {
                     planFeature += item+"," ;
@@ -156,12 +139,7 @@ namespace HYSABATApi.Controllers
                         System.IO.File.Delete(image);
                     }
                     string uniqueFileName = null;
-                    string extension = Path.GetExtension(model.FileImage.FileName);
-                    long size = (model.FileImage).Length;
-                    if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg")
-                    {
-                        if (size <= 1000000)
-                        {
+                   
                             string uploadFolder = Path.Combine(_webHost.WebRootPath, "PricingPlan");
                             uniqueFileName = Guid.NewGuid().ToString() + "_" + model.FileImage.FileName;
                             string filePath = Path.Combine(uploadFolder, uniqueFileName);
@@ -171,17 +149,8 @@ namespace HYSABATApi.Controllers
                                 await model.FileImage.CopyToAsync(stream);
                             }
                             plan.PricingPlanImagePath = uniqueFileName;
-                        }
-                        else
-                        {
-                            return BadRequest("File Too large");
-                        }
-                    }
-                    else
-                    {
-                        return BadRequest("Invalid File");
-                    }
-                    
+                        
+                     
 
                 }
                 plan.PricingPlanTitle = model.Title;

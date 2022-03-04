@@ -19,6 +19,7 @@ namespace HYSABATApi.Models.FeatureViewModel
         public string Description { get; set; }
         [Required]
         [Display(Name = "Feature Image  ")]
+        [AllowedExtension(new string[] { ".jpg", ".png", ".jpec" })]
         public IFormFile ImageFile { get; set; }
         [Required]
         [Display(Name = "Select DashBoard Feature")]

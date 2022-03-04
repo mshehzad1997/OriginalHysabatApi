@@ -50,12 +50,7 @@ namespace HYSABATApi.Controllers
             {
                 
                 string uniqueFileName = null;
-                string extension = Path.GetExtension(model.ImageFile.FileName);
-                 if(extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg")
-                {
-                    long size = (model.ImageFile).Length;
-                    if(size <= 1000000)
-                    {
+              
                         string uploadFolder = Path.Combine(_webHost.WebRootPath, "Feature");
                         uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
                         string filePath = Path.Combine(uploadFolder, uniqueFileName);
@@ -65,18 +60,7 @@ namespace HYSABATApi.Controllers
                             await model.ImageFile.CopyToAsync(stream);
 
                         }
-                    }
-                    else
-                    {
-                        return NotFound("File too large");
-                    }
-                }
-                else
-                {
-                    return NotFound("Invalid File");
-                }
-               
-
+                    
                 var featureModel = new Feature()
                 {
                     FeatureTitle = model.Title,
@@ -131,18 +115,12 @@ namespace HYSABATApi.Controllers
                 {
                     if (features.FeatureImagePath != null)
                     {
-                        string filePath = Path.Combine(_webHost.WebRootPath, "Feature", features.FeatureImagePath);
-                        System.IO.File.Delete(filePath);
+                        string PathFile = Path.Combine(_webHost.WebRootPath, "Feature", features.FeatureImagePath);
+                        System.IO.File.Delete(PathFile);
                     }
                    
                     string uniqueFileName = null;
 
-                    string extension = Path.GetExtension(model.ImageFile.FileName);
-                    if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg")
-                    {
-                        long size = (model.ImageFile).Length;
-                        if (size <= 1000000)
-                        {
                             string uploadFolder = Path.Combine(_webHost.WebRootPath, "Feature");
                             uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ImageFile.FileName;
                             string filePath = Path.Combine(uploadFolder, uniqueFileName);
@@ -151,17 +129,7 @@ namespace HYSABATApi.Controllers
                             {
                                 await model.ImageFile.CopyToAsync(stream);
                             }
-                        }
-                        else
-                        {
-                            return BadRequest("File Too large");
-                        }
-                       
-                    }
-                    else
-                    {
-                        return BadRequest("Invalid File");
-                    }
+                     
 
                     features.FeatureImagePath =  uniqueFileName;
                 }

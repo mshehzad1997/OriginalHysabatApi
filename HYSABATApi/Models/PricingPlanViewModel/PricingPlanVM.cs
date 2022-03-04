@@ -24,6 +24,7 @@ namespace HYSABATApi.Models.PricingPlanViewModel
         public int YearlyPrice { get; set; }
         [Required]
         [Display(Name = "Give Image of Plan")]
+        [AllowedExtension(new string[] { ".jpg", ".png", ".jpec" })]
         public IFormFile FileImage { get; set; }
         [InverseProperty("Features")]
         public string[] PricingPlanFeatures { get; set; }
