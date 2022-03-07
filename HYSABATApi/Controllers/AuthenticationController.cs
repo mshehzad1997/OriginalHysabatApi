@@ -1,5 +1,6 @@
 ﻿using HYSABATApi.Models;
 using HYSABATApi.Models.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -127,6 +128,7 @@ namespace HYSABATApi.Controllers
             }
             return Ok(new Response { Status = "Success", Message = "Admin Role Created Successfully" });
         }
+        [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [Route("ResetPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPassword model)
